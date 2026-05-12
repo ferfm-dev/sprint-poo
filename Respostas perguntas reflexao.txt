@@ -1,0 +1,8 @@
+1. Por que TrechoRodovia é uma classe e "BR-116 KM 10 ao 15" é um objeto?
+Resposta: Para evitar redundância no código, todos os trechos de rodovias terão características similares
+
+2. Como um método difere de uma função solta em programação estruturada?
+Resposta: Um método pertence a um objeto e normalmente manipula os dados desse objeto, enquanto uma função solta é independente e trabalha com dados passados como parâmetros, sem estar associada diretamente a um objeto específico.
+
+3. Se o nivelVegetacao fosse público, que tipo de "quebra" no sistema de previsão da Motiva um programador descuidado poderia causar?
+Resposta: Qualquer um poderia alterar o valor diretamente para números inválidos, como negativos ou ilógicos, comprometendo cálculos, previsões e decisões de manutenção do sistema.

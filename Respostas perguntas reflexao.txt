@@ -1,3 +1,4 @@
+SPRINT 1
 1. Por que TrechoRodovia é uma classe e "BR-116 KM 10 ao 15" é um objeto?
 Resposta: Para evitar redundância no código, todos os trechos de rodovias terão características similares
 
@@ -6,3 +7,12 @@ Resposta: Um método pertence a um objeto e normalmente manipula os dados desse 
 
 3. Se o nivelVegetacao fosse público, que tipo de "quebra" no sistema de previsão da Motiva um programador descuidado poderia causar?
 Resposta: Qualquer um poderia alterar o valor diretamente para números inválidos, como negativos ou ilógicos, comprometendo cálculos, previsões e decisões de manutenção do sistema.
+
+=====================================
+
+SPRINT 2
+1. Por que não faz sentido para a Motiva que uma equipe execute apenas uma "Intervenção Operacional" genérica sem especificar qual é?
+Resposta: Porque no contexto da Motiva toda ordem de serviço precisa especificar qual intervenção será feita (mecanizada, pulverização, manual etc.), já que cada uma tem equipamentos, custos e procedimentos diferentes. Uma "intervenção genérica" não tem significado operacional real.
+
+2. Qual a diferença arquitetural entre fazer um Trecho herdar de uma classe abstrata vs. implementar uma Interface?
+Resposta: A herança (extends) define o que o trecho é na hierarquia de tipos, e um trecho só pode herdar de uma classe. A interface (implements) define o que o trecho consegue fazer/expor, sem comprometer sua hierarquia — qualquer objeto de qualquer classe pode implementar MonitoravelViaIoT, desacoplando o contrato de comportamento da estrutura de herança.

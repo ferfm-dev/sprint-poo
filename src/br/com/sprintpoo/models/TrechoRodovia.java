@@ -1,6 +1,7 @@
 package br.com.sprintpoo.models;
 
 public class TrechoRodovia implements MonitoravelViaIoT {
+    private Long id; // NOVO: chave primária no banco (null enquanto não persistido)
     private String titulo;
     private float quilometroInicial;
     private float quilometroFinal;
@@ -20,6 +21,12 @@ public class TrechoRodovia implements MonitoravelViaIoT {
         this.possuiIoT = possuiIoT;
     }
 
+    // Construtor usado pelo DAO ao reconstruir um objeto vindo do banco (já com ID)
+    public TrechoRodovia(Long id, String titulo, float quilometroInicial, float quilometroFinal, float nivelVegetacaoCM, boolean possuiIoT) {
+        this(titulo, quilometroInicial, quilometroFinal, nivelVegetacaoCM, possuiIoT);
+        this.id = id;
+    }
+
     // --- Interface MonitoravelViaIoT ---
     @Override
     public void transmitirDadosSensor() {
@@ -34,7 +41,10 @@ public class TrechoRodovia implements MonitoravelViaIoT {
         this.nivelVegetacaoCM += crescimentoDetectado;
     }
 
-    // --- Getters e Setters (sem alteração) ---
+    // --- Getters e Setters ---
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getTitulo() { return titulo; }
 
@@ -77,6 +87,7 @@ public class TrechoRodovia implements MonitoravelViaIoT {
     }
 
     public boolean isPossuiIoT() { return possuiIoT; }
+    public void setPossuiIoT(boolean possuiIoT) { this.possuiIoT = possuiIoT; }
 
     public void registrarCrescimentoCM(float taxaCM) {
         if (taxaCM > 0) {

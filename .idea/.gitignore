@@ -1,0 +1,40 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Compilados
+*.class
+out/
+target/
+build/
+bin/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Driver JDBC (não versionar jars — cada um baixa o seu)
+lib/*.jar
+!lib/.gitkeep
+
+# Logs
+*.log
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Credenciais (se você algum dia extrair USER/PASSWORD pra um arquivo separado)
+*.env
+application.properties
+credentials.properties

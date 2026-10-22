@@ -7,5 +7,5 @@ import java.util.List;
 public interface TrechoRodoviaRepository extends JpaRepository<TrechoRodovia, Long> {
 
     // Derived Query exigida no requisito 3.4 da Sprint
-    List<TrechoRodovia> findByNivelVegetacaoCmGreaterThanEqual(float minimo);
+    List<TrechoRodovia> findByNivelVegetacaoCMGreaterThanEqual(float minimo);
 }

@@ -23,23 +23,27 @@ public class TrechoRodovia {
     @Column(name = "NIVEL_VEGETACAO_CM", nullable = false)
     private float nivelVegetacaoCM;
 
-    @Convert(converter = org.hibernate.type.YesNoConverter.class)
-    @Column(name = "POSSUI_IOT", nullable = false, length = 1)
-    private boolean possuiIoT;
+    @Column(name = "POSSUI_IOT", length = 1)
+    private Boolean possuiIoT = false;
 
     public TrechoRodovia() {}
 
-    // Gere os Getters e Setters na sua IDE (Alt+Insert ou clique direito -> Generate)
+    // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
+
     public float getQuilometroInicial() { return quilometroInicial; }
     public void setQuilometroInicial(float quilometroInicial) { this.quilometroInicial = quilometroInicial; }
+
     public float getQuilometroFinal() { return quilometroFinal; }
     public void setQuilometroFinal(float quilometroFinal) { this.quilometroFinal = quilometroFinal; }
+
     public float getNivelVegetacaoCM() { return nivelVegetacaoCM; }
     public void setNivelVegetacaoCM(float nivelVegetacaoCM) { this.nivelVegetacaoCM = nivelVegetacaoCM; }
-    public boolean isPossuiIoT() { return possuiIoT; }
-    public void setPossuiIoT(boolean possuiIoT) { this.possuiIoT = possuiIoT; }
+
+    public Boolean getPossuiIoT() { return possuiIoT; }
+    public void setPossuiIoT(Boolean possuiIoT) { this.possuiIoT = possuiIoT; }
 }

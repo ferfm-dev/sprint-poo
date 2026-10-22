@@ -74,6 +74,14 @@ curl -X POST http://localhost:8080/api/relatorios
 
 ---
 
+## ⚙️ Ajustes Técnicos Específicos (Sprint 4 x Oracle)
+
+- **Mapeamento de Booleano para Constraint Oracle (`POSSUI_IOT`)**:
+   - Como a tabela `TB_TRECHO_RODOVIA` reaproveitada da Sprint 3 possui uma *check constraint* (`ORA-02290`) que aceita apenas `'S'` (Sim) ou `'N'` (Não), a aplicação implementou um `AttributeConverter` customizado (`BooleanToSimNaoConverter`).
+   - Isso permite que a API receba um valor booleano limpo (`true`/`false`) no JSON do contrato REST e o traduza automaticamente para caracteres compatíveis com o Oracle nos bastidores, sem alterar a estrutura do banco de dados relacional.
+
+---
+
 ## 🧠 Perguntas de Reflexão (Documentação Acadêmica)
 
 ### 1. Por que o Repository é uma interface e não uma classe? Quem escreve a implementação e quando?

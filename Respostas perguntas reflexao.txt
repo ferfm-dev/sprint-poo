@@ -16,3 +16,19 @@ Resposta: Porque no contexto da Motiva toda ordem de serviço precisa especifica
 
 2. Qual a diferença arquitetural entre fazer um Trecho herdar de uma classe abstrata vs. implementar uma Interface?
 Resposta: A herança (extends) define o que o trecho é na hierarquia de tipos, e um trecho só pode herdar de uma classe. A interface (implements) define o que o trecho consegue fazer/expor, sem comprometer sua hierarquia — qualquer objeto de qualquer classe pode implementar MonitoravelViaIoT, desacoplando o contrato de comportamento da estrutura de herança.
+
+======================================
+
+SPRINT 4
+
+1. Por que o Repository é uma interface e não uma classe? Quem escreve a implementação e quando?
+**Resposta:** O `Repository` é uma interface porque o Spring Data JPA utiliza o conceito de metaprogramação e proxies dinâmicos em tempo de execução. Nós declaramos apenas o contrato (assinaturas dos métodos) e o **Spring Framework (junto com o Hibernate)** escreve a implementação e gera o código SQL em tempo de execução de forma automática com base nos nomes dos métodos (derived queries) ou nas anotações.
+
+2. O pattern DAO da Sprint 3 "morreu" na migração ou só mudou de forma? Explique com as suas palavras.
+**Resposta:** O padrão DAO **não morreu, ele foi absorvido e abstraído** pelo framework. Na Sprint 3 escrevíamos manualmente a lógica de persistência e comandos de banco (Data Access Object). Na Sprint 4, a interface do Spring Data JPA cumpre exatamente o mesmo papel conceitual de intermediar o acesso aos dados, mas sem que o desenvolvedor precise escrever código repetitivo de conexão, `PreparedStatement` ou mapeamento de `ResultSet`.
+
+3. Por que a validação de `nivelVegetacao >= 0` (Sprint 1) deve ficar no Service e não no Controller?
+**Resposta:** Porque a validação de nível de vegetação não é uma simples regra de formato de requisição HTTP, mas sim uma **regra de negócio fundamental do domínio**. A camada de `Controller` deve servir apenas como uma ponte de tradução entre o protocolo HTTP e a aplicação. Manter a lógica no `Service` garante que, se o sistema for consumido por outra interface no futuro (como um CLI ou mensageria), as regras de integridade do domínio continuarão sendo aplicadas rigorosamente.
+
+4. No JDBC puro vocês escreviam SQL. Onde está o SQL do `findByTipo()`? Quem o gerou?
+**Resposta:** O SQL do `findByTipo()` (ou análogos de consulta baseados em nomes) **não foi escrito manualmente por nós**. Ele foi **gerado dinamicamente pelo Hibernate / Spring Data JPA** em tempo de execução. O framework interpreta o nome do método (`findBy...`), compreende os atributos da entidade mapeada com `@Entity` e traduz automaticamente para a sintaxe SQL compatível com o banco de dados relacional configurado.
